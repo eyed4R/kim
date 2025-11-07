@@ -1,0 +1,14 @@
+controller:
+  kp: 1.5
+  ki: 0.1
+  kd: 0.05
+  max_speed: 2.0
+  min_speed: 0.1
+sensors:
+  camera:
+    width: 640
+    height: 480
+    fps: 30
+  lidar:
+    range: 10.0
+    resolution: 0.1

@@ -1,0 +1,14 @@
+<launch>
+    <!-- Аргументы -->
+    <arg name="robot_name" default="my_robot"/>
+    
+    <!-- Загрузка параметров из YAML файла -->
+    <rosparam command="load" file="$(find study_pkg)/config/robot_config.yaml" ns="$(arg robot_name)"/>
+    
+    <!-- Параметры через тег param -->
+    <param name="$(arg robot_name)/enable_debug" type="bool" value="true"/>
+    <param name="$(arg robot_name)/update_rate" type="double" value="30.0"/>
+    
+    <!-- Запуск узла -->
+    <node name="param_node" pkg="study_pkg" type="param_node.py" output="screen" ns="$(arg robot_name)"/>
+</launch>

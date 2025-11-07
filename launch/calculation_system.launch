@@ -1,0 +1,4 @@
+<launch>
+    <node name="polynomial_node" pkg="study_pkg" type="polynomial_node.py" output="screen"/>
+    <node name="summing_node" pkg="study_pkg" type="summing_node.py" output="screen"/>
+</launch>
