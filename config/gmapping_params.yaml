@@ -1,0 +1,24 @@
+# Фреймы
+base_frame: base_footprint
+map_frame: map
+odom_frame: odom
+
+# Параметры лидара
+maxUrange: 3.0
+sigma: 0.05
+kernelSize: 1
+
+# Параметры обновления
+linearUpdate: 0.5
+angularUpdate: 0.3
+temporalUpdate: 0.5
+
+# Параметры карты
+xmin: -10.0
+ymin: -10.0
+xmax: 10.0
+ymax: 10.0
+delta: 0.05
+
+# Параметры частиц
+particles: 30
