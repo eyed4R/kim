@@ -1,4 +1,17 @@
 <launch>
- <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch" />
- <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch" />
+  <!-- Используем наш world launch из study_pkg -->
+  <include file="$(find study_pkg)/launch/turtlebot3_world.launch">
+    <!-- Задаём новое положение робота -->
+    <arg name="x_pos" value="2.0"/>
+    <arg name="y_pos" value="-1.5"/>
+    <arg name="z_pos" value="0.1"/>
+    <!-- Меняем модель робота -->
+    <arg name="model" value="waffle_pi"/>
+  </include>
+  
+  <!-- Используем наш slam launch -->
+  <include file="$(find study_pkg)/launch/turtlebot3_slam.launch">
+    <!-- Указываем ту же модель -->
+    <arg name="model" value="waffle_pi"/>
+  </include>
 </launch>
