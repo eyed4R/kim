@@ -1,0 +1,23 @@
+<launch>
+  <!-- Устанавливаем модель turtlebot3 -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg unless="$(eval model == 'burger' or model == 'waffle' or model == 'waffle_pi')" name="model" value="waffle"/>
+  
+  <!-- Запуск симуляции -->
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch">
+    <arg name="model" value="$(arg model)"/>
+  </include>
+  
+  <!-- Запуск SLAM -->
+  <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch">
+    <arg name="model" value="$(arg model)"/>
+  </include>
+  
+  <!-- Запуск навигации -->
+  <include file="$(find study_pkg)/launch/turtlebot3_move_base.launch">
+    <arg name="model" value="$(arg model)"/>
+  </include>
+  
+  <!-- Запуск Rviz с уникальным именем -->
+  <node pkg="rviz" type="rviz" name="navigation_rviz" args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
+</launch>
